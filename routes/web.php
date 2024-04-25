@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShortUrlController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +20,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::post('/short', [\App\Http\Controllers\ShortUrlController::class, 'short'])->name('short.url');
+//Route::get('/{short_url}', [\App\Http\Controllers\ShortUrlController::class, 'redirect'])->name('short.url.redirect');

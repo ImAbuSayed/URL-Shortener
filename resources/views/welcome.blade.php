@@ -25,13 +25,14 @@
 <main class="container mx-auto p-6 bg-white rounded-lg shadow-md max-w-md">
     <section class="mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-2">Shorten Your URL</h2>
-        <form id="shorten-form">
+        <form method="POST" id="shorten-form" action="{{ route('short.url') }}">
+            @csrf
             <label for="url-input" class="sr-only">URL</label>
             <input type="url" id="url-input" placeholder="Paste your long URL here"
-                   class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                   class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" name="url" required>
             <button type="submit"
                     class="bg-blue-500 text-white font-medium py-2 px-4 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Shorten
+                Short
             </button>
         </form>
     </section>
