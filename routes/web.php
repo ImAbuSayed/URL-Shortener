@@ -22,5 +22,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::post('/short', [\App\Http\Controllers\ShortUrlController::class, 'short'])->name('short.url');
-Route::get('/{massege}', [\App\Http\Controllers\ShortUrlController::class, 'massege'])->name('short.url.massege');
+Route::get('/{short_url}', [\App\Http\Controllers\ShortUrlController::class, 'redirect'])->name('short.url.redirect');
 //Route::get('/{short_url}', [\App\Http\Controllers\ShortUrlController::class, 'redirect'])->name('short.url.redirect');
