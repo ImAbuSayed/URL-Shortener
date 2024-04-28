@@ -46,7 +46,6 @@
     <section class="result-section" id="shortened-url">
         <h3 class="text-lg font-bold text-gray-800 mb-2">Your shortened URL: @if(session ('shortedUrl')) <p id="short-link" class="rounded-md px-4 py-2 bg-gray-200 text-white-800">{{ url(session('shortedUrl')) }}</p> @endif</h3>
         <div class="flex items-center">
-            <a id="short-link" target="_blank" class="text-blue-500 hover:text-blue-600 break-all"></a>
             <button id="copy-button" data-clipboard-target="#short-link"
                     class="bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md ml-4 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">
                 Copy
