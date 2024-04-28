@@ -10,8 +10,8 @@ class ShortUrl extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'url',
-        'short_url'
+        'short_url',
+        'ip_address',
     ];
 }

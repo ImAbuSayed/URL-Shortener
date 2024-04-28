@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id') ->nullable()->constrained();
             $table->string('url');
             $table->string('short_url');
+            $table->string('ip_address')->nullable(); // Add IP address column
             $table->timestamps();
         });
     }

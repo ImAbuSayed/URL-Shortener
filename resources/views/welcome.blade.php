@@ -9,7 +9,7 @@
 <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
 
 <header class="container mx-auto p-6 bg-white rounded-lg shadow-md max-w-md">
-    <h1 class="text-2xl font-bold text-gray-800">URL Shortener</h1>
+    <h1 class="text-4xl font-bold text-blue-900 dark:text-blue-900">URL Shortener</h1>
     <nav>
         @auth
             <a href="{{ url('/dashboard') }}" class="text-gray-800 hover:text-gray-600">Dashboard</a>
@@ -21,6 +21,12 @@
         @endauth
     </nav>
 </header>
+@if (session('success'))
+    <br>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <br>
 <main class="container mx-auto p-6 bg-white rounded-lg shadow-md max-w-md">
     <section class="mb-6">
@@ -38,16 +44,27 @@
     </section>
 
     <section class="result-section" id="shortened-url">
-        <h3 class="text-lg font-bold text-gray-800 mb-2">Your shortened URL:</h3>
+        <h3 class="text-lg font-bold text-gray-800 mb-2">Your shortened URL: @if(session ('shortedUrl')) <p id="short-link" class="rounded-md px-4 py-2 bg-gray-200 text-white-800">{{ url(session('shortedUrl')) }}</p> @endif</h3>
         <div class="flex items-center">
             <a id="short-link" target="_blank" class="text-blue-500 hover:text-blue-600 break-all"></a>
-            <button id="copy-button"
+            <button id="copy-button" data-clipboard-target="#short-link"
                     class="bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md ml-4 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">
                 Copy
             </button>
         </div>
     </section>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('#copy-button');
 
+    clipboard.on('success', function(e) {
+        // Optional: Display a success message or change button appearance
+    });
+
+    clipboard.on('error', function(e) {
+        // Optional: Handle copy errors
+    });
+</script>
 </body>
 </html>
